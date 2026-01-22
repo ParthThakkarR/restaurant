@@ -76,7 +76,7 @@ export default function LoginPage() {
               {/* Password */}
               <div className="form-outline mb-3">
                 <input
-                  type="password"
+                  type="text"
                   className="form-control form-control-lg"
                   placeholder="Password"
                   value={form.Password}

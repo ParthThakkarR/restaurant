@@ -20,6 +20,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const t = localStorage.getItem('token')
+    console.log('TOKEN FOUND:', t)
+
     if (t) {
       setToken(t)
       setRole(getRoleFromToken())
