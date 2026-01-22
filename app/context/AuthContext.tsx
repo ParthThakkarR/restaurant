@@ -18,15 +18,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [role, setRole] = useState<string | null>(null)
   const router = useRouter()
 
+  // ✅ run ONLY once on app load
   useEffect(() => {
-    const t = localStorage.getItem('token')
-    console.log('TOKEN FOUND:', t)
+    const stored = localStorage.getItem('token')
 
-    if (t) {
-      setToken(t)
+    if (stored) {
+      setToken(stored)
       setRole(getRoleFromToken())
     }
-  }, [])
+  }, []) // 🔥 EMPTY DEP ARRAY (IMPORTANT)
 
   function loginUser(newToken: string) {
     localStorage.setItem('token', newToken)
@@ -42,9 +42,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider
-      value={{ token, role, loginUser, logoutUser }}
-    >
+    <AuthContext.Provider value={{ token, role, loginUser, logoutUser }}>
       {children}
     </AuthContext.Provider>
   )

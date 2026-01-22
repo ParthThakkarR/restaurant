@@ -10,10 +10,13 @@ export function createCategory(data: {
   return post('/menu-categories', data)
 }
 
-export function updateCategory(id: number, data: any) {
-  return patch(`/menu-categories/${id}`, data)
+export function updateCategory(
+  categoryId: number,
+  data: any
+) {
+  return patch(`/menu-categories/${categoryId}`, data)
 }
 
-export function deleteCategory(id: number) {
-  return del(`/menu-categories/${id}`)
+export function deleteCategory(categoryId: number) {
+  return del(`/menu-categories/${categoryId}`)
 }
